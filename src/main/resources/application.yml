@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    username: root
+    password: qhj12345
+    #?serverTimezone=UTC解决时区的报错
+    url: jdbc:mysql://localhost:3306/bs_springboot?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #关闭模板引擎缓存
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    mode: html5
+    encoding: utf-8
+    suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+
+
+#整合mybatis
+mybatis:
+  type-aliases-package: com.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+

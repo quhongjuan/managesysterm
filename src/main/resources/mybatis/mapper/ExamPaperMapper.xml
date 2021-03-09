@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.ExamPaperMapper">
+
+    <select id="queryPaperList" resultType="Exampapers" parameterType="int">
+        select * from exampapers where authorId=#{authorId};
+    </select>
+    <select id="queryEndPaperList" resultType="Exampapers" parameterType="int">
+        select * from exampapers where authorId=#{authorId} AND isVisible=2;
+    </select>
+
+    <select id="queryPaperById" resultType="Exampapers" parameterType="int">
+        select * from exampapers where paperId = #{paperId};
+    </select>
+
+    <select id="queryNameByPaperId" resultType="com.pojo.Teacher" parameterType="int">
+        select * from teacher t, exampapers e where t.id=e.authorId AND paperId = #{paperId};
+    </select>
+
+    <insert id="addPaper" parameterType="Exampapers">
+        insert into exampapers VALUES (#{paperId},#{authorId},#{releaseTime},#{endTime},#{context},#{stuCode},#{teaCode},#{isVisible},#{title});
+    </insert>
+
+    <update id="updatePaper" parameterType="Exampapers" >
+        UPDATE exampapers set title=#{title},releaseTime=#{releaseTime},endTime=#{endTime},stuCode=#{stuCode},teaCode=#{teaCode},context=#{context} where paperId = #{paperId};
+    </update>
+
+   <delete id="deletePaper" parameterType="int">
+       delete from exampapers where paperId = #{paperId};
+   </delete>
+
+
+    <select id="yanzhengTeaCode" resultType="Exampapers" >
+        select * from exampapers where title = #{title} AND teaCode=#{teaCode};
+    </select>
+
+</mapper>

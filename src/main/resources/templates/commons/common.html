@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--头部-->
+<!-- BEGIN HEADER -->
+<div class="page-header navbar navbar-fixed-top" th:fragment="header">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner ">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a href="index.html">
+                <img th:src="@{/assets/layouts/layout4/img/logo-light.png}" alt="logo" class="logo-default" /> </a>
+            <div class="menu-toggler sidebar-toggler">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+            </div>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN PAGE TOP -->
+        <div class="page-top">
+            <!-- BEGIN HEADER SEARCH BOX -->
+            <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+            <form class="search-form" action="page_general_search_2.html" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+                    <span class="input-group-btn">
+                                <a href="javascript:;" class="btn submit">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </span>
+                </div>
+            </form>
+            <!-- END HEADER SEARCH BOX -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="separator hide"> </li>
+                    <!-- BEGIN NOTIFICATION DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-bell"></i>
+                            <span class="badge badge-success"> 7 </span>
+                        </a>
+                    </li>
+                    <!-- END NOTIFICATION DROPDOWN -->
+                    <li class="separator hide"> </li>
+                    <!-- BEGIN INBOX DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-envelope-open"></i>
+                            <span class="badge badge-danger"> 4 </span>
+                        </a>
+
+                    </li>
+                    <!-- END INBOX DROPDOWN -->
+                    <li class="separator hide"> </li>
+                    <!-- BEGIN TODO DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-calendar"></i>
+                            <span class="badge badge-primary"> 3 </span>
+                        </a>
+
+                    </li>
+                    <!-- END TODO DROPDOWN -->
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <li class="dropdown dropdown-user dropdown-dark">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <span class="username username-hide-on-mobile" th:text="${session.userName}">未登录</span>
+                            <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                            <img alt="" class="img-circle" th:src="@{/assets/layouts/layout4/img/avatar9.jpg}" /> </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a th:href="@{/teacher/queryInfo}">
+                                    <i class="icon-user"></i> 查看个人信息 </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/teacher/updateInfo}">
+                                    <i class="icon-calendar"></i> 修改个人信息 </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/teacher/changePw0}">
+                                    <i class="icon-envelope-open"></i> 修改密码
+                                </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a th:href="@{/exit}">
+                                    <i class="icon-key"></i> 注销 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END PAGE TOP -->
+    </div>
+    <!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<!-- BEGIN HEADER & CONTENT DIVIDER -->
+<div class="clearfix"> </div>
+<!-- END HEADER & CONTENT DIVIDER -->
+
+
+<!--侧边-->
+
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar-wrapper" th:fragment="sider">
+        <!-- BEGIN SIDEBAR -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <div class="page-sidebar navbar-collapse collapse">
+
+            <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                <li class="nav-item start active open">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <a th:href="@{/index}" class="nav-link ">
+                        <i class="icon-home"></i>
+                        <span class="title">首页</span>
+                        <span class="selected"></span>
+                        <span class="arrow open"></span>
+                    </a>
+                </li>
+                <li class="heading">
+                    <h3 class="uppercase">试卷</h3>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-settings"></i>
+                        <span class="title">试卷管理</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a th:href="@{/find}" class="nav-link ">
+                                <i class="icon-magnifier"></i>
+                                        <span class="title">查看试卷</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a th:href="@{/add}" class="nav-link ">
+                                <i class="icon-cloud-upload"></i>
+                                        <span class="title">上传试卷</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-wrench"></i>
+                        <span class="title">阅卷管理</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a th:href="@{/answer/paperList}" class="nav-link ">
+                                <i class="icon-heart"></i>
+                                <span class="title">试卷列表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="heading">
+                    <h3 class="uppercase">监考</h3>
+                </li>
+                <li class="nav-item  ">
+                    <a th:href="@{/monitor/yanzheng01}" class="nav-link nav-toggle">
+                        <i class="icon-layers"></i>
+                        <span class="title">实时监控</span>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a th:href="@{/monitor/endExamList}" class="nav-link nav-toggle">
+                        <i class="icon-layers"></i>
+                        <span class="title">监考历史记录</span>
+                    </a>
+                </li>
+                <li class="heading">
+                    <h3 class="uppercase">系统管理</h3>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-note"></i>
+                        <span class="title">个人信息管理</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a th:href="@{/teacher/queryInfo}" class="nav-link ">
+                                <i class="icon-home"></i>
+                                <span class="title">个人信息</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a th:href="@{/teacher/updateInfo}" class="nav-link ">
+                                <i class="icon-pencil"></i>
+                                <span class="title">修改信息</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a th:href="@{/teacher/changePw0}" class="nav-link ">
+                                <i class="icon-tag"></i>
+                                <span class="title">修改密码</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">管理员权限</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a th:href="@{/admin/queryTeachers}" class="nav-link ">
+                                <i class="icon-clock"></i>
+                                <span class="title">教师信息管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="app_todo_2.html" class="nav-link ">
+                                <i class="icon-check"></i>
+                                <span class="title">待开发</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">系统帮助</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="app_todo.html" class="nav-link ">
+                                <i class="icon-clock"></i>
+                                <span class="title">Todo 1</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="app_todo_2.html" class="nav-link ">
+                                <i class="icon-check"></i>
+                                <span class="title">Todo 2</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+
+
+</div>
+<!-- END CONTAINER -->
+
+
+<!--底部-->
+<!-- BEGIN FOOTER -->
+<div class="page-footer" th:fragment="footer">
+    <div class="page-footer-inner"> 2021 &copy; Create by Qu Hongjuan.
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+</div>
+<!-- END FOOTER -->
+
+</body>
+</html>
